@@ -9,6 +9,10 @@ int main()
         
         cout << "Pernyataan tidak akan ditampilkan" << endl;
     }
+    catch (int a)
+    {
+        cout << "Pengecualian akan di eksekusi" << endl;
+    }
     
     
 }
