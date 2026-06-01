@@ -36,3 +36,27 @@ class TokoElektronik
     }
 
 };
+
+//Menampilkan seluruh data barang dari file gudang.txt
+void bacaBarang()
+{
+    ifstream file("gudang.txt");
+
+    string barang;
+    int nomor = 1;
+
+    cout << "\n===== DAFTAR BARANG DI GUDANG =====\n";
+
+    if (!file)
+    {
+        cout << "Belum ada data barang.\n";
+        return;
+    }
+
+    while (getline(file, barang))
+    {
+        cout << nomor++ << ". " << barang << endl;
+    }
+
+    file.close();
+}
