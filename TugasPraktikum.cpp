@@ -80,3 +80,47 @@ void tambahBarang()
     cout << "Barang berhasil ditambahkan.\n";
 }
 
+//Mengubah data barang yang sudah ada di file
+void updateBarang()
+{
+    vector<string> daftarBarang;
+    string barang;
+
+    ifstream file("gudang.txt");
+
+    while (getline(file, barang))
+    {
+        daftarBarang.push_back(barang);
+    }
+
+    file.close();
+
+    int nomor;
+
+    cout << "Masukkan nomor barang yang ingin diubah: ";
+    cin >> nomor;
+
+    if (nomor < 1 || nomor > daftarBarang.size())
+    {
+        cout << "Nomor barang tidak ditemukan.\n";
+        return;
+    }
+
+    cin.ignore();
+
+    cout << "Masukkan nama barang baru: ";
+    getline(cin, barang);
+
+    daftarBarang[nomor - 1] = barang;
+
+    ofstream simpan("gudang.txt");
+
+    for (string item : daftarBarang)
+    {
+        simpan << item << endl;
+    }
+
+    simpan.close();
+
+    cout << "Data barang berhasil diperbarui.\n";
+}
