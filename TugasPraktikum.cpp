@@ -124,3 +124,43 @@ void updateBarang()
 
     cout << "Data barang berhasil diperbarui.\n";
 }
+
+//Menghapus data barang dari file
+void hapusBarang()
+{
+    vector<string> daftarBarang;
+    string barang;
+
+    ifstream file("gudang.txt");
+
+    while (getline(file, barang))
+    {
+        daftarBarang.push_back(barang);
+    }
+
+    file.close();
+
+    int nomor;
+
+    cout << "Masukkan nomor barang yang ingin dihapus: ";
+    cin >> nomor;
+
+    if (nomor < 1 || nomor > daftarBarang.size())
+    {
+        cout << "Nomor barang tidak ditemukan.\n";
+        return;
+    }
+
+    daftarBarang.erase(daftarBarang.begin() + (nomor - 1));
+
+    ofstream simpan("gudang.txt");
+
+    for (string item : daftarBarang)
+    {
+        simpan << item << endl;
+    }
+
+    simpan.close();
+
+    cout << "Barang berhasil dihapus.\n";
+}
