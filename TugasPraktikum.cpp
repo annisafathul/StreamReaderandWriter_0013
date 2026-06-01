@@ -164,3 +164,37 @@ void hapusBarang()
 
     cout << "Barang berhasil dihapus.\n";
 }
+
+//Menguji pengambilan barang dari etalase
+void simulasiEtalase()
+{
+    TokoElektronik toko;
+
+    cout << "\n===== SIMULASI ETALASE =====\n";
+
+    cout << "\nSkenario 1 (Rak indeks 1)\n";
+
+    try
+    {
+        cout << "Barang berhasil diambil: "
+             << toko.ambilProduk(1)
+             << endl;
+    }
+    catch (const exception& e)
+    {
+        cout << e.what() << endl;
+    }
+
+    cout << "\nSkenario 2 (Rak indeks 5)\n";
+
+    try
+    {
+        cout << "Barang berhasil diambil: "
+             << toko.ambilProduk(5)
+             << endl;
+    }
+    catch (const exception& e)
+    {
+        cout << e.what() << endl;
+    }
+}
